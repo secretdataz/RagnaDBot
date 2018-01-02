@@ -82,5 +82,8 @@ class Load(unittest.TestCase):
         self.assertEqual(mvp3.maps[0].time_min, 120)
         self.assertEqual(mvp3.maps[0].time_max, 130)
 
+
 if __name__ == '__main__':
     unittest.main()
+
+

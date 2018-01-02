@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 import yaml
+import time
+import threading
+#import main
+
 
 class MVP(yaml.YAMLObject):
     yaml_tag = u'!Monster'
@@ -8,6 +12,6 @@ class MVP(yaml.YAMLObject):
     def __init__(self, name, info):
         self.name = name
         self.info = info
-        self.downtime = 0
+        #self.downtime = 0
 
 

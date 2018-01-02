@@ -5,8 +5,10 @@ import sys
 import discord
 import asyncio
 import getopt
+import threading
+import time
 from lib import load
-from lib import tests
+
 
 # Some ascii art
 _welcome ="""
@@ -29,7 +31,16 @@ _config = "config.yml"
 _client = discord.Client()
 _settings = load.load_settings(_config)
 _mvp_list = load.parse_mvp_list(_settings['mvp_list'])
-# move all loads to other module so it can be used like discord.Client
+_channel = discord.Object(id='310899932762603521') #has to be done via config
+
+
+def parse_input(content):
+    try:
+        cmd, name, time = content.split(' ', 3)
+    except:
+        logging.warning("Parsing failed")
+    logging.debug(' '.join(['parse_input:', 'cmd:', cmd,
+                            '| name:', name, '| time:', time]))
 
 
 def parse_mvp_list(path):
@@ -76,14 +87,24 @@ async def on_ready():
 
 @_client.event
 async def on_message(message):
-    if message.content.startswith('!echo'):
-        await _client.send_message(message.channel, message.content)
+    if message.content.startswith('!list'):
+        await _client.send_message(_channel, get_mvps())
+    elif message.content.startswith('!dead'):
+        con = str(message.content)
+        parse_input(con)
+        #await mark_dead(con.split(' ')[1])
+        #await _client.send_message(_channel, con.split(' ')[1])
+
+
+async def send_message(message):
+    await _client.send_message(_channel, message)
 
 
 def main():
     print(_welcome)
     parse_args(sys.argv)
-    #_client.run(settings['token'])
+    #mark_dead('test')
+    _client.run(_settings['token'])
 
 
 if __name__ == "__main__":
