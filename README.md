@@ -1,6 +1,4 @@
-<snippet>
-  <content><![CDATA[
-# ${1:Project Name}
+# RagnaDBot 
 
 Status: Currently not working Version 0.1
 
@@ -41,7 +39,4 @@ Readme Template: https://gist.github.com/zenorocha/4526327
 ## License
 
 TODO: Write license
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
 
