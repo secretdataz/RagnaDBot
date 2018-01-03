@@ -110,6 +110,7 @@ def main():
     parse_args(sys.argv)
     if not _debug_core:
         _client.run(_settings['token'])
+        exit(0)
 
     # testing
     print(_mvp_list[1].info.name)
