@@ -62,7 +62,8 @@ def parse_args(args):
     opts, args = getopt.getopt(args[1:], "hl:t:")
     for opt, arg in opts:
         if opt == '-h':
-            print("MVP Tracker: -h [shows this message], -l <debug, info, warning> [sets the log level]")
+            print("MVP Tracker: -h [shows this message], -l <debug, info, "
+                  "warning> [sets the log level]")
             sys.exit(2)
         elif opt == '-l':
             log_type = logging.WARNING
@@ -72,7 +73,8 @@ def parse_args(args):
                 log_type = logging.INFO
             elif arg == 'warning':
                 log_type = logging.WARNING
-            logging.basicConfig(format='%(levelname)s:%(message)s', level=log_type)
+            logging.basicConfig(format='%(levelname)s:%(message)s',
+                                level=log_type)
 
 
 def get_mvps():
