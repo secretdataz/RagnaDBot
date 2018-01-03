@@ -8,7 +8,9 @@ This project should be a Discord Bot which works as MVP Tracker for Ragnarok Onl
 
 ## Dependencies
 
-Lib: https://github.com/Rapptz/discord.py
+Lib:
+  - https://github.com/Rapptz/discord.py
+  - https://github.com/yaml/pyyaml
 
 ## Installation
 
