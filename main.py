@@ -33,15 +33,15 @@ _channel = discord.Object(id='310899932762603521')  # has to be done via config
 _debug_core = False
 
 
-async def _job(_time):
-    await asyncio.sleep(int(_time))
+async def _job(time_):
+    await asyncio.sleep(int(time_))
     logging.debug('_job: sleep over')
-    await send_message(time)
+    await send_message(time_)
 
 
 def parse_input(content):
     try:
-        cmd, name, time = content.split(' ', 3)
+        cmd, name, time_ = content.split(' ', 3)
     except:
         logging.warning("Parsing failed")
     logging.debug(' '.join(['parse_input:', 'cmd:', cmd,
