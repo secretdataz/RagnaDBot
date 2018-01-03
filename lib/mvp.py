@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 import yaml
 import time
-import threading
-#import main
+import logging
+
+
+logging.basicConfig(format='%(levelname)s:%(message)s',
+                          level=logging.DEBUG)
+
 
 
 class MVP(yaml.YAMLObject):
@@ -12,6 +16,7 @@ class MVP(yaml.YAMLObject):
     def __init__(self, name, info):
         self.name = name
         self.info = info
-        #self.downtime = 0
 
-
+    def parse_maps(self):
+        print('test')
+        logging.debug(' '.join(['_parse_maps:', info]))
