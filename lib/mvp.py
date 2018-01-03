@@ -4,10 +4,22 @@ import logging
 
 
 logging.basicConfig(format='%(levelname)s:%(message)s',
-                          level=logging.DEBUG)
+                    level=logging.DEBUG)
 
 
-class MVP(yaml.YAMLObject):
+class MVP:
+    def __init__(self, yaml_mvp):
+        self._task = None
+        self.info = yaml_mvp
+        self.death = False
+
+    def set_task(self, task_):
+        if self._task is not None:
+            self._task.cancel()
+        self._task = task_
+
+
+class yaml_MVP(yaml.YAMLObject):
     yaml_tag = u'!Monster'
     # name: mvp name
     # map_spawn: list of maps and spawn times
@@ -15,7 +27,3 @@ class MVP(yaml.YAMLObject):
     def __init__(self, name, info):
         self.name = name
         self.info = info
-
-    def parse_maps(self):
-        print('test')
-        logging.debug(' '.join(['_parse_maps:', self.info]))

@@ -97,9 +97,8 @@ async def on_message(message):
         # parse_input(con)
 
         # working do NOT remove, needed later
-        _task = asyncio.ensure_future(_job(con.split(' ')[1]))
+        _mvp_list[1].set_task(asyncio.ensure_future(_job(con.split(' ')[1])))
         logging.debug('init timer')
-        # task.cancel()
 
 
 async def send_message(message):
@@ -111,6 +110,10 @@ def main():
     parse_args(sys.argv)
     if not _debug_core:
         _client.run(_settings['token'])
+
+    # testing
+    print(_mvp_list[1].info.name)
+    print(_mvp_list[1].test())
 
 
 if __name__ == "__main__":
