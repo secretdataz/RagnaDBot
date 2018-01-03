@@ -32,6 +32,12 @@ _client = discord.Client()
 _settings = load.load_settings(_config)
 _mvp_list = load.parse_mvp_list(_settings['mvp_list'])
 _channel = discord.Object(id='310899932762603521') #has to be done via config
+_debug_core = False 
+
+async def _job(time):
+     await asyncio.sleep(int(time))
+     logging.debug('_job: sleep over')
+     await send_message(time)
 
 
 def parse_input(content):
@@ -49,6 +55,8 @@ def parse_mvp_list(path):
         mvp_list = list(yaml.load_all(mvp_list))
         logging.debug(mvp_list)
         logging.debug(", ".join(str([mvp.name, mvp.info]) for mvp in mvp_list))
+        for mvp in mvp_list:
+            mvp.parse_maps()
     return mvp_list
 
 
@@ -91,10 +99,14 @@ async def on_message(message):
         await _client.send_message(_channel, get_mvps())
     elif message.content.startswith('!dead'):
         con = str(message.content)
-        parse_input(con)
-        #await mark_dead(con.split(' ')[1])
-        #await _client.send_message(_channel, con.split(' ')[1])
+        #temp disabled
+        #parse_input(con)
 
+        #working do NOT remove, needed later
+        _task = asyncio.ensure_future(_job(con.split(' ')[1]))
+        logging.debug('init timer')
+        #_task.cancel()
+        
 
 async def send_message(message):
     await _client.send_message(_channel, message)
@@ -103,8 +115,8 @@ async def send_message(message):
 def main():
     print(_welcome)
     parse_args(sys.argv)
-    #mark_dead('test')
-    _client.run(_settings['token'])
+    if not _debug_core:
+        _client.run(_settings['token'])
 
 
 if __name__ == "__main__":
