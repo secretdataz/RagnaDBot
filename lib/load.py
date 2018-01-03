@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 import yaml
 import logging
-import sys
-from lib.mvp import MVP
 
 
 def load_settings(path):

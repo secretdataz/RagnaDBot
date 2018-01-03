@@ -5,13 +5,11 @@ import sys
 import discord
 import asyncio
 import getopt
-import threading
 import time
 from lib import load
 
-
 # Some ascii art
-_welcome ="""
+_welcome = """
  __  ____      _______    _______             _ version 0.1
 |  \/  \ \    / /  __ \  |__   __|           | |
 | \  / |\ \  / /| |__) |    | |_ __ __ _  ___| | _____ _ __
@@ -23,21 +21,22 @@ By Normynator                           for Ragnarok Online"""
 # Config
 _log_level = logging.DEBUG
 logging.basicConfig(format='%(levelname)s:%(message)s',
-                          level=_log_level)
+                    level=_log_level)
 logging.info(" ".join(["Config logging is enabled and set to:",
-                         str(_log_level)]))
+                       str(_log_level)]))
 # Path to the config file
 _config = "config.yml"
 _client = discord.Client()
 _settings = load.load_settings(_config)
 _mvp_list = load.parse_mvp_list(_settings['mvp_list'])
-_channel = discord.Object(id='310899932762603521') #has to be done via config
-_debug_core = False 
+_channel = discord.Object(id='310899932762603521')  # has to be done via config
+_debug_core = False
 
-async def _job(time):
-     await asyncio.sleep(int(time))
-     logging.debug('_job: sleep over')
-     await send_message(time)
+
+async def _job(_time):
+    await asyncio.sleep(int(_time))
+    logging.debug('_job: sleep over')
+    await send_message(time)
 
 
 def parse_input(content):
@@ -75,12 +74,6 @@ def parse_args(args):
             elif arg == 'warning':
                 log_type = logging.WARNING
             logging.basicConfig(format='%(levelname)s:%(message)s', level=log_type)
-        elif opt == "-t":
-            logging.basicConfig(format='%(levelname)s:%(message)s',
-                          level=logging.DEBUG)
-            if arg == "mvps":
-                logging.debug("Running test: mvps")
-                test_mvps()
 
 
 def get_mvps():
@@ -99,14 +92,14 @@ async def on_message(message):
         await _client.send_message(_channel, get_mvps())
     elif message.content.startswith('!dead'):
         con = str(message.content)
-        #temp disabled
-        #parse_input(con)
+        # temp disabled
+        # parse_input(con)
 
-        #working do NOT remove, needed later
+        # working do NOT remove, needed later
         _task = asyncio.ensure_future(_job(con.split(' ')[1]))
         logging.debug('init timer')
-        #_task.cancel()
-        
+        # task.cancel()
+
 
 async def send_message(message):
     await _client.send_message(_channel, message)
@@ -121,4 +114,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
