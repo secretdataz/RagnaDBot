@@ -5,7 +5,6 @@ import sys
 import discord
 import asyncio
 import getopt
-import time
 from lib import load
 
 # Some ascii art
@@ -42,10 +41,10 @@ async def _job(time_):
 def parse_input(content):
     try:
         cmd, name, time_ = content.split(' ', 3)
-    except:
+    except():
         logging.warning("Parsing failed")
     logging.debug(' '.join(['parse_input:', 'cmd:', cmd,
-                            '| name:', name, '| time:', time]))
+                            '| name:', name, '| time:', time_]))
 
 
 def parse_mvp_list(path):
