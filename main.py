@@ -28,7 +28,7 @@ _config = "config.yml"
 _client = discord.Client()
 _settings = load.load_settings(_config)
 _mvp_list = load.parse_mvp_list(_settings['mvp_list'])
-_channel = discord.Object(id='310899932762603521')  # has to be done via config
+_channel = discord.Object(id=_settings['channel_id'])
 _debug_core = False
 
 
