@@ -3,6 +3,20 @@ import unittest
 from lib import load
 
 
+class Cmd(unittest.TestCase):
+    def test_info():
+        self.assertFalse()
+
+    def test_dead():
+        self.assertFalse()
+
+    def test_list():
+        self.assertFalse()
+
+    def test_help():
+        self.assertFalse()
+
+
 class Load(unittest.TestCase):
     def test_1_load_settings(self):
         ret = load.load_settings("test_files/test_config1.yml")
@@ -49,17 +63,12 @@ class Load(unittest.TestCase):
         self.assertEqual(mvp3.info, [['lhz_dun02', 120, 130]])
 
     def test_2_load_list_mvp_info(self):
+        names = ['moc_pryd06', 'test', 'lhz_dun03', 'lhz_dun02']
         ret = load.parse_mvp_list("test_files/test_mvps1.list")
-        if len(ret) != 3:
-            self.assertFalse()
-        mvp1 = ret[0]
-        mvp2 = ret[1]
-        mvp3 = ret[2]
-
-        self.assertEqual(mvp1.maps[0].name, 'moc_pryd06')
-        self.assertEqual(mvp1.maps[1].name, 'test')
-        self.assertEqual(mvp2.maps[0].name, 'lhz_dun03')
-        self.assertEqual(mvp3.maps[0].name, 'lhz_dun02')
+        i = 0
+        for key in ret:
+            self.assertEqual(ret[key].info[0], names[i])
+            i += 1
 
     def test_3_load_list_mvp_info(self):
         ret = load.parse_mvp_list("test_files/test_mvps1.list")
@@ -81,5 +90,3 @@ class Load(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-

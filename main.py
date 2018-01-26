@@ -47,6 +47,7 @@ def parse_input(content):
                             '| name:', name, '| time:', time_]))
 
 
+# moved to lib.load
 def parse_mvp_list(path):
     with open(path) as f:
         mvp_list = f.read()
@@ -59,6 +60,7 @@ def parse_mvp_list(path):
 
 
 def parse_args(args):
+    """Parses the given command line arguments."""
     opts, args = getopt.getopt(args[1:], "hl:t:")
     for opt, arg in opts:
         if opt == '-h':

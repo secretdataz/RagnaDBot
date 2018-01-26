@@ -22,9 +22,10 @@ def parse_mvp_list(path):
         mvp_list = _add_mvp_info_to_obj(mvp_list)
     return mvp_list
 
-def _add_mvp_info_to_obj(mvp_list):
-    ret_list = []
-    for yaml_obj in mvp_list:
-        ret_list.append(MVP(yaml_obj))
-    return ret_list
 
+def _add_mvp_info_to_obj(mvp_list):
+    ret_dict = {}
+    for yaml_obj in mvp_list:
+        # ret_list.append(MVP(yaml_obj))
+        ret_dict[yaml_obj.name] = MVP(yaml_obj)
+    return ret_dict
