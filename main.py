@@ -105,11 +105,16 @@ async def on_message(message):
         except:
             await _client.send_message(_channel, 'Error: parse, !dead')
             return
-        job_str_ = '"{}" could be alive on "{}". Tomb at: {}'
-        map_.set_task(asyncio.ensure_future(_job(map_.min_,
-                                                 job_str_.format(
+        job_min_str_ = '"{}" could be alive on "{}". Tomb at: {}'
+        map_.set_task_min(asyncio.ensure_future(_job(map_.min_,
+                                                 job_min_str_.format(
                                                      mvp_.name,
                                                      map_.map_name, "x,y"))))
+        job_max_str_ = '"{}" is alive on "{}".'
+        map_.set_task_max(asyncio.ensure_future(_job(map_.max_,
+                                                job_max_str_.format(
+                                                     mvp_.name,
+                                                     map_.map_name))))
         logging.debug('init timer')
         msg_str_ = '"{}" is marked as dead, on map "{}" for {} seconds'
         await _client.send_message(_channel, msg_str_.format(mvp_.name,

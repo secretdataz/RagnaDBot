@@ -18,21 +18,23 @@ class Map:
         self.min_ = min_
         self.max_ = max_
         self.map_name = map_name
-        self._task = None
+        self._task_min = None
+        self._task_max = None
 
-    def set_task(self, task_):
-        if self._task is not None:
-            self._task.cancel()
-        self._task = task_
+    def set_task_min(self, task_):
+        if self._task_min is not None:
+            self._task_min.cancel()
+        self._task_min = task_
 
+    def set_task_max(self, task_):
+        if self._task_max is not None:
+            self._task_max.cancel()
+        self._task_max = task_
 
 class MVP:
-
     def __init__(self, yaml_mvp):
         self.name, self.maps = _parse_yaml_obj(yaml_mvp)
 
-    async def set_task(self, time_):
-        
 
 class yaml_MVP(yaml.YAMLObject):
     yaml_tag = u'!Monster'
