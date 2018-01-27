@@ -32,10 +32,10 @@ _channel = discord.Object(id=_settings['channel_id'])
 _debug_core = False
 
 
-async def _job(time_):
+async def _job(time_, msg_):
     await asyncio.sleep(int(time_))
     logging.debug('_job: sleep over')
-    await send_message(time_)
+    await send_message(msg_)
 
 
 def parse_input(content):
@@ -80,7 +80,7 @@ def parse_args(args):
 
 
 def get_mvps():
-    return ", ".join(str(mvp.name) for mvp in _mvp_list)
+    return ", ".join(mvp for mvp in _mvp_list)
 
 
 @_client.event
@@ -99,9 +99,24 @@ async def on_message(message):
         # parse_input(con)
 
         # working do NOT remove, needed later
-        _mvp_list[1].set_task(asyncio.ensure_future(_job(con.split(' ')[1])))
+        try:
+            mvp_ = _mvp_list[con.split(',')[1]]
+            map_ = mvp_.maps[con.split(',')[2]] 
+        except:
+            await _client.send_message(_channel, 'Error: parse, !dead')
+            return
+        job_str_ = '"{}" could be alive on "{}". Tomb at: {}'
+        map_.set_task(asyncio.ensure_future(_job(map_.min_,
+                                                 job_str_.format(
+                                                     mvp_.name,
+                                                     map_.map_name, "x,y"))))
         logging.debug('init timer')
-
+        msg_str_ = '"{}" is marked as dead, on map "{}" for {} seconds'
+        await _client.send_message(_channel, msg_str_.format(mvp_.name,
+                                                             map_.map_name,
+                                                             map_.min_))
+    elif message.content.startswith('!info'):
+        await _client.send_message(_channel, 'Placeholder')
 
 async def send_message(message):
     await _client.send_message(_channel, message)
