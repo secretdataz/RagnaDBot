@@ -1,6 +1,7 @@
 # RagnaDBot 
 
 Version: 0.2
+
 Status: Working (with basic functions)
 
 This is a hobby project. I use this project to get used to python.
