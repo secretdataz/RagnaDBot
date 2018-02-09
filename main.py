@@ -30,10 +30,10 @@ _settings = load.load_settings(_config)
 _mvp_list = load.parse_mvp_list(_settings['mvp_list'])
 _channel = discord.Object(id=_settings['channel_id'])
 _debug_core = False
-
+_time_mult = 60  # .sleep works with seconds, to get minutes multiply by 60
 
 async def _job(time_, msg_):
-    await asyncio.sleep(int(time_))
+    await asyncio.sleep(int(time_)*_time_mult)
     logging.debug('_job: sleep over')
     await send_message(msg_)
 
@@ -61,11 +61,11 @@ def parse_mvp_list(path):
 
 def parse_args(args):
     """Parses the given command line arguments."""
-    opts, args = getopt.getopt(args[1:], "hl:t:")
+    opts, args = getopt.getopt(args[1:], "hdl:")
     for opt, arg in opts:
         if opt == '-h':
             print("MVP Tracker: -h [shows this message], -l <debug, info, "
-                  "warning> [sets the log level]")
+                  "warning> [sets the log level], -d [enable debug mode]")
             sys.exit(2)
         elif opt == '-l':
             log_type = logging.WARNING
@@ -77,10 +77,11 @@ def parse_args(args):
                 log_type = logging.WARNING
             logging.basicConfig(format='%(levelname)s:%(message)s',
                                 level=log_type)
-
+        elif opt == '-d':
+            _time_mult = 1
 
 def get_mvps():
-    return ", ".join(mvp for mvp in _mvp_list)
+    return "\n ".join(mvp for mvp in _mvp_list)
 
 
 @_client.event
@@ -101,7 +102,7 @@ async def on_message(message):
         # working do NOT remove, needed later
         try:
             mvp_ = _mvp_list[con.split(',')[1]]
-            map_ = mvp_.maps[con.split(',')[2]] 
+            map_ = mvp_.maps[con.split(',')[2]]
         except:
             await _client.send_message(_channel, 'Error: parse, !dead')
             return
@@ -116,12 +117,13 @@ async def on_message(message):
                                                      mvp_.name,
                                                      map_.map_name))))
         logging.debug('init timer')
-        msg_str_ = '"{}" is marked as dead, on map "{}" for {} seconds'
+        msg_str_ = '"{}" is marked as dead, on map "{}" for {} minutes'
         await _client.send_message(_channel, msg_str_.format(mvp_.name,
                                                              map_.map_name,
                                                              map_.min_))
     elif message.content.startswith('!info'):
-        await _client.send_message(_channel, 'Placeholder')
+        await _client.send_message(_channel,
+                                   'Usage: !dead,MVP_Name,MVP_Map')
 
 async def send_message(message):
     await _client.send_message(_channel, message)
