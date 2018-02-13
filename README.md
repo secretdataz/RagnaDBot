@@ -22,6 +22,10 @@ Lib:
 
 ## Usage
 
+Edit config.yml with token and channel id of your server.
+
+Edit mvp.list to add more mvps.
+
 TODO: Write usage instructions
 
 ## Contributing
