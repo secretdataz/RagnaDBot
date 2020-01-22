@@ -1,13 +1,271 @@
 --- !Monster
 name: Amon Ra
-info: [[moc_pryd06, 60, 70],
-       [test, 20, 20]
-      ]
+info: [[moc_pryd06, 60, 70]]
 
 --- !Monster
 name: Assassin Cross Eremes
 info: [[lhz_dun03, 100, 130]]
 
 --- !Monster
-name: Ygnizem
+name: Amon Ra (Nightmare)
+info: [[moc_prydn2, 60, 70]]
+
+--- !Monster
+name: Atroce
+info: [[gld_dun03_2, 480, 490],
+       [ra_fild03, 180, 190],
+       [ra_fild04, 300, 310],
+       [ve_fild01, 180, 190],
+       [ve_fild02, 180, 190]
+      ]
+
+--- !Monster
+name: Minstrel Alphoccio
+info: [[lhz_dun04, 100, 130]]
+
+--- !Monster
+name: Professor Celia
+info: [[lhz_dun04, 100, 130]]
+
+--- !Monster
+name: Champion Chen
+info: [[lhz_dun04, 100, 130]]
+
+--- !Monster
+name: Creator Flamel
+info: [[lhz_dun04, 100, 130]]
+
+--- !Monster
+name: Stalker Gertie
+info: [[lhz_dun04, 100, 130]]
+
+--- !Monster
+name: Paladin Randel
+info: [[lhz_dun04, 100, 130]]
+
+--- !Monster
+name: Gypsy Trentini
+info: [[lhz_dun04, 100, 130]]
+
+--- !Monster
+name: Baphomet
+info: [[gld_dun03, 480, 490],
+       [prt_maze03, 120, 130]
+      ]
+
+--- !Monster
+name: Beelzebub
+info: [[abbey03, 720, 730]]
+
+--- !Monster
+name: Big Eggring
+info: [[lasa_dun01, 60, 70]]
+
+--- !Monster
+name: Boitata
+info: [[bra_dun02, 120, 130]]
+
+--- !Monster
+name: Daehyon
+info: [[gld2_pay, 480, 490]]
+
+--- !Monster
+name: Dark Lord
+info: [[gl_chyard, 60, 70],
+       [gl_chyard_, 60, 70],
+       [gld_dun04_2, 480, 490]
+      ]
+
+--- !Monster
+name: Detardeurus
+info: [[abyss_03, 180, 190]]
+
+--- !Monster
+name: Doppelganger
+info: [[gef_dun02, 120, 130],
+       [gld_dun04, 480, 490]
+      ]
+
+--- !Monster
+name: Dracula
+info: [[gef_dun01, 60, 70]]
+
+--- !Monster
+name: Drake
+info: [[treasure02, 120, 130]]
+
+--- !Monster
+name: Eddga
+info: [[gld_dun01_2, 480, 490],
+       [pay_fild10, 120, 130]
+      ]
+
+--- !Monster
+name: Egnigem Cenia
 info: [[lhz_dun02, 120, 130]]
+
+--- !Monster
+name: Evil Snake Lord
+info: [[gon_dun03, 94, 95]]
+
+--- !Monster
+name: Fallen Bishop
+info: [[abbey02, 120, 130]]
+
+--- !Monster
+name: Gioia
+info: [[gld2_ald, 480, 490]]
+
+--- !Monster
+name: Gloom Under Night
+info: [[ra_san05, 300, 310]]
+
+--- !Monster
+name: Golden Thief Bug
+info: [[prt_sewb4, 60, 70]]
+
+--- !Monster
+name: Gopinich
+info: [[mosk_dun03, 120, 130]]
+
+--- !Monster
+name: Garm
+info: [[xmas_fild01, 120, 130]]
+
+--- !Monster
+name: High Priest Margaretha
+info: [[lhz_dun03, 100, 130]]
+
+--- !Monster
+name: High Wizard Kathryne
+info: [[lhz_dun03, 100, 130]]
+
+--- !Monster
+name: Ifrit
+info: [[thor_v03, 660, 670]]
+
+--- !Monster
+name: Kades
+info: [[gld2_gef, 480, 490]]
+
+--- !Monster
+name: Kiel D-01
+info: [[kh_dun02, 120, 130]]
+
+--- !Monster
+name: Kraken
+info: [[iz_dun05, 120, 130]]
+
+--- !Monster
+name: Lady Tanee
+info: [[ayo_dun02, 420, 430]]
+
+--- !Monster
+name: Leak
+info: [[dew_dun01, 60, 70]]
+
+--- !Monster
+name: Lord Knight Seyren
+info: [[lhz_dun03, 100, 130]]
+
+--- !Monster
+name: Lord of Death
+info: [[niflheim, 133, 133]]
+
+--- !Monster
+name: Whitesmith Howard
+info: [[lhz_dun02, 100, 130]]
+
+--- !Monster
+name: Maya
+info: [[anthell02, 120, 130],
+       [gld_dun02_2, 480, 490]
+      ]
+
+--- !Monster
+name: Mistress
+info: [[gld_dun02, 480, 490],
+       [mjolnir_04, 120, 130]
+      ]
+
+--- !Monster
+name: Moonlight Flower
+info: [[gld_dun01, 480, 490],
+       [pay_dun04, 60, 70]
+      ]
+
+--- !Monster
+name: Orc Hero
+info: [[gef_fild03, 60, 70]]
+
+--- !Monster
+name: Orc Lord
+info: [[gef_fild10, 120, 130]]
+
+--- !Monster
+name: Osiris
+info: [[moc_pryd04, 60, 70]]
+
+--- !Monster
+name: Pharaoh
+info: [[in_sphinx5, 60, 70]]
+
+--- !Monster
+name: Phreeoni
+info: [[moc_fild17, 120, 130]]
+
+--- !Monster
+name: Pyuriel
+info: [[gld2_prt, 480, 490]]
+
+--- !Monster
+name: Queen Scaraba
+info: [[dic_dun02, 120, 130]]
+
+--- !Monster
+name: RSX-0806
+info: [[ein_dun02, 65, 75]]
+
+--- !Monster
+name: Samurai Specter
+info: [[ama_dun03, 0, 0]]
+
+--- !Monster
+name: Sniper Cecil
+info: [[lhz_dun03, 100, 130]]
+
+--- !Monster
+name: Stormy Knight
+info: [[xmas_dun02, 60, 70]]
+
+--- !Monster
+name: Tao Gunka
+info: [[beach_dun, 300, 310]]
+
+--- !Monster
+name: Thanatos
+info: [[thana_boss, 120, 130]]
+
+--- !Monster
+name: Timeholder
+info: [[c_tower3_, 120, 130]]
+
+--- !Monster
+name: Turtle General
+info: [[tur_dun04, 60, 70]]
+
+--- !Monster
+name: Valkyrie Randgris
+info: [[odin_tem03, 480, 490]]
+
+--- !Monster
+name: Vesper
+info: [[jupe_core, 120, 130]]
+
+--- !Monster
+name: White Lady
+info: [[lou_dun03, 116, 126]]
+
+--- !Monster
+name: Wounded Morocc
+info: [[moc_fild22, 720, 730]]
